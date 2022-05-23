@@ -11,8 +11,8 @@ const ModifyItemCard = ({ item }) => {
 
     // const [isEditMode, setIsEditMode] = useState(false);
     const [uploadImage, setUploadImage] = useState("")
-    const [deleteItemAPI, { data, loading, error }] = useMutation(DELETE_ITEM);
-    const [updateItemAPI, { updateData, updateLoading, updateError }] = useMutation(UPDATE_ITEM);
+    const [deleteItemAPI] = useMutation(DELETE_ITEM);
+    const [updateItemAPI] = useMutation(UPDATE_ITEM);
 
     const [values, setValues] = useState(
         {

@@ -19,7 +19,7 @@ const httpLink = new HttpLink({
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://${uriBase}`,
+  uri: `wss://${uriBase}`,
   options: { reconnect: true },
 });
 // create upload link for uploading image purpose

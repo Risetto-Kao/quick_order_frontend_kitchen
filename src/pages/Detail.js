@@ -12,6 +12,7 @@ import ImageUpload from "./ImageUpload";
 import { CREATE_ITEM, DELETE_ITEM, UPDATE_ITEM } from "../graphql/mutations";
 import { Settings } from "@mui/icons-material";
 import { Box } from "@mui/material";
+import { primary } from "../constants/styles";
 
 
 const Detail = () => {
@@ -77,10 +78,13 @@ const Detail = () => {
                 variables: {
                     data: {
                         name: currentItem.name,
+                        description: currentItem.description,
                         price: currentItem.price,
                         img: currentItem.img,
-                        // description: currentItem.description,
-                        // type: "主食"
+                        type: currentItem.type,
+                        englishName: currentItem.englishName,
+                        englishDescription: currentItem.englishDescription,
+                        englishType: currentItem.englishType
                     },
                     file: currentFile
                 }
@@ -113,12 +117,12 @@ const Detail = () => {
                     updateItemId: currentItem.id,
                     data: {
                         name: currentItem.name,
+                        description: currentItem.description,
                         price: currentItem.price,
                         img: currentItem.img,
-                        description: currentItem.description,
                         type: currentItem.type,
-                        englishDescription: currentItem.englishDescription,
                         englishName: currentItem.englishName,
+                        englishDescription: currentItem.englishDescription,
                         englishType: currentItem.englishType
                     },
                     file: currentFile
@@ -231,12 +235,13 @@ const Detail = () => {
             <Grid item xs={9} spacing={1}>
                 <TextField
                     fullWidth
-                    id="outlined-multiline-static"
-                    placeholder="描述"
-
+                    variant='outlined'
+                    placeholder='描述'
+                    color='primary'
                     multiline
                     rows={4}
                     defaultValue={currentItem.description}
+                // style={{ background:  }}
                 />
             </Grid>
             <Grid item xs={3}>
@@ -245,7 +250,7 @@ const Detail = () => {
             <Grid item xs={9} spacing={1}>
                 <TextField
                     fullWidth
-                    id="outlined-multiline-static"
+                    variant='outlined'
                     placeholder="英文描述"
                     multiline
                     rows={4}

@@ -45,4 +45,10 @@ export const UPLOAD_FILE = gql`
             url
         }
     }
-`
+`;
+
+export const UPDATE_STATE = gql`
+mutation UpdateOrderItemState($orderId: String!, $itemId: String!, $state: String!) {
+  updateOrderItemState(orderId: $orderId, itemId: $itemId, state: $state)
+}
+`;

@@ -1,7 +1,9 @@
+import { useMutation } from "@apollo/client";
 import { Grid, Card, CardHeader, IconButton, CardContent, Typography, makeStyles, ListItemSecondaryAction, Divider } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { opposite, primary, secondary } from "../constants/styles";
+import { UPDATE_STATE } from "../graphql/mutations";
 import { nextStatus, statusToColor } from "../utils/transfer";
 
 const useStyles = makeStyles({
@@ -53,24 +55,42 @@ const useStyles = makeStyles({
     },
 });
 
-const KitchenItemCard = ({ item }) => {
+const KitchenItemCard = ({ item, orderID }) => {
 
 
-    // const [status, setStatus] = useState(item.status);
-    const [status, setStatus] = useState('RAW');
+    const [status, setStatus] = useState(item.orderItemInfo.state);
+
+
     const classes = useStyles(item);
 
+    const [updateStateAPI] = useMutation(UPDATE_STATE);
+    const statusList = ['unready', 'preparing', 'ready'];
     const updateStatus = async (sequential) => {
-        // TODO: api connect
-        // await 
+        // cardClassName = statusToStyles(status);
+
+        try {
+            console.log(orderID);
+            console.log(item.id);
+            console.log(nextStatus(status, sequential));
+            await updateStateAPI({
+                variables: {
+                    orderId: orderID,
+                    itemId: item.id,
+                    state: nextStatus(status, sequential)
+                }
+            });
+            console.log("update success");
+        } catch (e) {
+            console.log(e);
+        }
         setStatus(nextStatus(status, sequential));
-        cardClassName = statusToStyles(status);
+
     }
 
     const statusToStyles = () => {
-        if (status === "RAW") return classes.raw;
-        if (status === "RUNNING") return classes.running;
-        if (status === "DONE") return classes.done;
+        if (status === 'unready') return classes.raw;
+        if (status === 'preparing') return classes.running;
+        if (status === 'ready') return classes.done;
         return classes.default;
     }
 
@@ -87,7 +107,7 @@ const KitchenItemCard = ({ item }) => {
 
     return (
 
-        <Card className={cardClassName} onClick={updateStatus}>
+        <Card className={status === 'ready' ? classes.done : (status === 'preparing' ? classes.running : classes.raw)} onClick={updateStatus}>
             <CardHeader titleTypographyProps={{ variant: 'h6' }} title={`${item.name} * ${quantity}`}></CardHeader>
             <Divider className={classes.divider} />
             <CardContent >{note}</CardContent>

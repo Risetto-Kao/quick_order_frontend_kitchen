@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 const statusColor = (status) => {
     if (status === 'unready') return raw;
     if (status === 'preparing') return doing;
-    if (status === 'readly') return done;
+    if (status === 'ready') return done;
     return raw;
 }
 
@@ -24,13 +24,15 @@ const CounterItemsCard = ({ items }) => {
     return (
         <div >
             {items.map(item => {
+                console.log(item)
                 var quantity;
-                var color = statusColor(item.orderItemInfo.status);
                 if (item.orderItemInfo) {
                     quantity = item.orderItemInfo.quantity;
                 } else {
                     quantity = 0;
                 }
+                var color = statusColor(item.orderItemInfo.state);
+
                 return (
                     <Grid container className={classes.container}>
                         <Grid item style={{ marginRight: '5px' }}>

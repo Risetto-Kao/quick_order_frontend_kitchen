@@ -97,6 +97,7 @@ const Kitchen = () => {
     useEffect(() => {
         if (data) {
             setOrderList(data.todayOrders);
+            console.log(data.todayOrders);
         }
         subscribeToMore({
             document: SUBSCRIPTION_ORDER,

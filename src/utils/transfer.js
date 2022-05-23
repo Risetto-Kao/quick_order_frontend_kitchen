@@ -1,5 +1,5 @@
 const nextStatus = (currentStatus, sequential) => {
-    const statusList = ['RAW', 'RUNNING', 'DONE'];
+    const statusList = ['unready', 'preparing', 'ready'];
     var index;
     if (sequential) {
         index = statusList.indexOf(currentStatus) + 1;
@@ -8,15 +8,14 @@ const nextStatus = (currentStatus, sequential) => {
     }
     if (index < 0) return currentStatus;
     if (index >= statusList.length) return currentStatus;
-    console.log(currentStatus + ' -> ' + statusList[index]);
 
     return statusList[index];
 }
 
 const statusToColor = {
-    'RAW': '#EA0000',
-    'RUNNING': '#FFDC35',
-    'DONE': '#00BB00'
+    'unready': '#EA0000',
+    'preparing': '#FFDC35',
+    'ready': '#00BB00'
 };
 
 

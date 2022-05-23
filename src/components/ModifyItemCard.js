@@ -4,11 +4,12 @@ import { Delete, Edit, MoreVert } from "@material-ui/icons";
 import { valueToPercent } from "@mui/base";
 import { SaveAs } from "@mui/icons-material";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { DELETE_ITEM, UPDATE_ITEM, UPLOAD_FILE } from "../graphql/mutations";
 
 const ModifyItemCard = ({ item }) => {
 
-    const [isEditMode, setIsEditMode] = useState(false);
+    // const [isEditMode, setIsEditMode] = useState(false);
     const [uploadImage, setUploadImage] = useState("")
     const [deleteItemAPI, { data, loading, error }] = useMutation(DELETE_ITEM);
     const [updateItemAPI, { updateData, updateLoading, updateError }] = useMutation(UPDATE_ITEM);
@@ -21,6 +22,7 @@ const ModifyItemCard = ({ item }) => {
         }
     );
 
+    const history = useHistory();
 
 
     const handleChange = (prop) => (event) => {
@@ -29,9 +31,9 @@ const ModifyItemCard = ({ item }) => {
         setValues({ ...values, [prop]: value });
     };
 
-    const handleMode = () => {
-        setIsEditMode(!isEditMode);
-    }
+    // const handleMode = () => {
+    //     setIsEditMode(!isEditMode);
+    // }
 
 
     const deleteItem = async () => {
@@ -45,7 +47,7 @@ const ModifyItemCard = ({ item }) => {
             await updateItemAPI({ variables: { updateItemId: item.id, data: values, file: uploadImage } });
             window.location.reload();
         } else {
-            handleMode();
+            // handleMode();
         }
     }
 
@@ -53,80 +55,81 @@ const ModifyItemCard = ({ item }) => {
         if (values.name !== item.name) return true;
         if (values.price !== item.price) return true;
         if (values.img !== item.img) return true;
-        if (uploadImage!=="") return true;
+        if (uploadImage !== "") return true;
         return false;
     }
-    const handleImgChange = (e) =>{
+    const handleImgChange = (e) => {
         const file = e.target.files[0]
         if (!file) return
         setUploadImage(file)
     }
 
-    if (isEditMode) return (
-        <Grid item key={item.id} xs={12} sm={6} md={4}>
-            <Card
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-            >
-                <CardHeader action={
-                    <IconButton aria-label="settings" onClick={deleteItem}>
-                        <Delete />
-                    </IconButton>
-                }
-                    title="店長推薦">
+    // if (isEditMode) return (
+    //     <Grid item key={item.id} xs={12} sm={6} md={4}>
+    //         <Card
+    //             sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+    //             onClick={() => history.push(`/detail/${item.id}`)}
+    //         >
+    //             <CardHeader action={
+    //                 <IconButton aria-label="settings" onClick={deleteItem}>
+    //                     <Delete />
+    //                 </IconButton>
+    //             }
+    //                 title="店長推薦">
 
-                </CardHeader>
-                <CardMedia
-                    component="img"
-                    image={values.img}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                    <TextField variant="outlined" onChange={handleChange('name')} value={values.name} label="名稱" />
-                </CardContent>
-                <CardContent sx={{ flexGrow: 1 }}>
-                    <TextField variant="outlined" onChange={handleChange('img')} value={values.img} label="圖片ONLY png and jpeg" disabled/>
-                    <input type="file" accept="image/x-png,image/jpeg" onChange={handleImgChange}></input>
-                </CardContent>
-                <CardContent>
-                    <TextField type="number" variant="outlined" onChange={handleChange('price')} value={values.price} label="價格" />
-                </CardContent>
-                <CardContent>
-                    <Button variant="contained" color='secondary' onClick={updateItem}>更新資訊</Button>
-                </CardContent>
-            </Card>
-        </Grid>
-    );
+    //             </CardHeader>
+    //             <CardMedia
+    //                 component="img"
+    //                 image={values.img}
+    //             />
+    //             <CardContent sx={{ flexGrow: 1 }}>
+    //                 <TextField variant="outlined" onChange={handleChange('name')} value={values.name} label="名稱" />
+    //             </CardContent>
+    //             <CardContent sx={{ flexGrow: 1 }}>
+    //                 <TextField variant="outlined" onChange={handleChange('img')} value={values.img} label="圖片ONLY png and jpeg" disabled />
+    //                 <input type="file" accept="image/x-png,image/jpeg" onChange={handleImgChange}></input>
+    //             </CardContent>
+    //             <CardContent>
+    //                 <TextField type="number" variant="outlined" onChange={handleChange('price')} value={values.price} label="價格" />
+    //             </CardContent>
+    //             <CardContent>
+    //                 <Button variant="contained" color='secondary' onClick={updateItem}>更新資訊</Button>
+    //             </CardContent>
+    //         </Card>
+    //     </Grid>
+    // );
 
-    else {
-        return (<Grid item key={item.id} xs={12} sm={6} md={4}>
-            <Card
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-            >
-                <CardHeader action={
-                    <IconButton aria-label="settings" onClick={handleMode}>
-                        <Edit />
-                    </IconButton>
-                }
-                    title="店長推薦">
+    // else {
+    return (<Grid item key={item.id} xs={6} sm={3} md={3}>
+        <Card
+            sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+        >
+            <CardHeader titleTypographyProps={{ variant: 'h6' }} action={
+                <IconButton aria-label="settings" onClick={() => history.push(`/detail/${item.id}`)}>
+                    <Edit />
+                </IconButton>
+            }
+                title={item.name}>
 
-                </CardHeader>
-                <CardMedia
-                    component="img"
-                    image={item.img}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {item.name}
-                    </Typography>
-                    <Typography>
-                        {item.description}
-                    </Typography>
-                </CardContent>
-                <CardContent>
-                    $ {item.price}
-                </CardContent>
-            </Card>
-        </Grid>);
-    }
+            </CardHeader>
+            {/* <CardMedia
+                component="img"
+                image={item.img}
+            /> */}
+            {/* <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                    {item.name}
+                </Typography>
+                <Typography>
+                    {item.description}
+                </Typography>
+            </CardContent> */}
+            <CardContent>
+                $ {item.price}
+            </CardContent>
+        </Card>
+    </Grid>);
+    // }
 
 }
 

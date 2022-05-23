@@ -1,0 +1,176 @@
+{
+    "items": [
+        {
+            "id": "item001",
+            "name": "蛋包飯",
+            "price": 80,
+            "img": "https://drive.google.com/uc?id=1_Z_Ggf2NNCw0geL43pkrxZ41Sa9FrV_V",
+            "description": "蛋奶酥製作的蛋包飯特別鬆軟，入口即化的那一瞬間美味的無法形容",
+            "type": "主食",
+            "tags": [
+                "蛋素"
+            ],
+            "comments": [
+                {
+                    "name": "--anonymous",
+                    "content": "好吃",
+                    "rate": 4,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": ""
+                },
+                {
+                    "name": "howard_chi",
+                    "content": "裡面有蟑螂腳....",
+                    "rate": 1,
+                    "time": "2022-04-11T14:02:18",
+                    "imgUrl": "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
+                },
+                {
+                    "name": "evan123",
+                    "content": "好吃，有姊姊的味道",
+                    "rate": 5,
+                    "time": "2022-04-11T14:03:38",
+                    "imgUrl": "https://i.picsum.photos/id/887/200/300.jpg?hmac=jzro4NZWOPJxqU5bUBoxrD7f4jPtFNB4VmKpn7H5sYI"
+                }
+            ]
+        },
+        {
+            "id": "item002",
+            "name": "義大利麵",
+            "price": 100,
+            "img": "https://drive.google.com/uc?id=16OomzrZRh-is7imuweHt169U-VBzwakJ",
+            "description": "把義大利麵卷在筷子上，就變成一個面卷，一口吃下去，面裡流出少許的汁水。在義大利麵上能變出的戲法，可不比大衛魔術遜色。",
+            "type": "主食",
+            "tags": [
+                "含有甲殼類"
+            ],
+            "comments": [
+                {
+                    "name": "--anonymous",
+                    "content": "讚",
+                    "rate": 4,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": "https://i.picsum.photos/id/256/200/300.jpg?hmac=6-SQmUqIECHQ4QadM7mAYY3sHPH5r_8e2pCBs7V67Sc"
+                }
+            ]
+        },
+        {
+            "id": "item003",
+            "name": "巧克力蛋糕",
+            "price": 50,
+            "img": "https://drive.google.com/uc?id=1hSTdxXTqG-s3PgM7W2Kxmkg_x6neNmWU",
+            "description": "蛋糕口感特别柔软，绵滑，搭配上淡淡的草莓味道，吃在嘴里有一種幸福的味道。",
+            "type": "甜點",
+            "tags": [
+                "含酒",
+                "蛋奶素"
+            ],
+            "comments": [
+                {
+                    "name": "--anonymous",
+                    "content": "hi, I'm Yi Long Ma.",
+                    "rate": 5,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": ""
+                }
+            ]
+        },
+        {
+            "id": "item004",
+            "name": "水果茶",
+            "price": 90,
+            "img": "https://drive.google.com/uc?id=1Wc25wxVBmCcAxB_NOJe7CXllL68OHmv_",
+            "description": "用料多到超出想像，茶水在多重果味的席捲下繽紛多彩，果肉跳躍舌尖，喝起來完全不會無聊。",
+            "type": "飲料",
+            "tags": null,
+            "comments": []
+        },
+        {
+            "id": "item005",
+            "name": "麻醬麵",
+            "price": 40,
+            "img": "https://drive.google.com/uc?id=1Ygem5GwtZWUwEDrxM0jKg6gIP3bM8CVo",
+            "description": "麵體兼具嚼勁和彈性，和碗底的麻醬搭配得絲絲入扣；而醬料則為精華所在，在麻醬和乾拌醬之間十分巧妙地取得平衡，有麻醬的香氣和味道，卻沒有麻醬的厚重感，讓人吃的時候順口吃完時候舒暢，大口啖食是好吃而簡單明快，細細品嚐則是極致的均衡和協調",
+            "type": "主食",
+            "tags": [
+                "含花生"
+            ],
+            "comments": [
+                {
+                    "name": "fat_man",
+                    "content": "awesome food",
+                    "rate": 4,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": "https://i.picsum.photos/id/797/200/300.jpg?hmac=9JRjR3IU9I3ol6cF0HvudMsYauIgNcElExNSrGOlwGM"
+                }
+            ]
+        },
+        {
+            "id": "item006",
+            "name": "披薩",
+            "price": 120,
+            "img": "https://drive.google.com/uc?id=15DN9XmlNwkUQiQ7bUkE66yOarDr0mpyi",
+            "description": "熱氣騰騰剛出爐的那種烘烤到剛剛好的外皮，一層厚厚的起司，可以拉出好多絲\n",
+            "type": "主食",
+            "tags": null,
+            "comments": [
+                {
+                    "name": "evil_spirit",
+                    "content": "DO NOT order this",
+                    "rate": 1,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": "https://i.picsum.photos/id/770/200/300.jpg?hmac=HBQpna8VW4X1Rl2MaV0_h4m-2AJ56a0FuiLAhe_JCW8"
+                },
+                {
+                    "name": "funny_boy",
+                    "content": "order this please",
+                    "rate": 5,
+                    "time": "2022-04-11T14:01:18",
+                    "imgUrl": "https://i.picsum.photos/id/1078/200/300.jpg?hmac=cIIdxycLQ-pOopDajDdPoOPwl9nnMld2aG58k8IgyX4"
+                }
+            ]
+        },
+        {
+            "id": "item007",
+            "name": "泡芙",
+            "price": 25,
+            "img": "https://drive.google.com/uc?id=1LjkyrD-7NvJZ0z6EUcecnGjlzuRrV2_r",
+            "description": "看似一大圈的柔滑奶油和果凍圍繞著泡芙，湯匙輕觸時即會發現，其實是清脆的馬林糖，薄荷果凍帶涼的甜口感滑嫩",
+            "type": "甜點",
+            "tags": null,
+            "comments": []
+        },
+        {
+            "id": "item008",
+            "name": "洋蔥圈",
+            "price": 45,
+            "img": "https://drive.google.com/uc?id=1E5q8fPRgunEw_wghPC19KcfOAcN2DBa9",
+            "description": "洋蔥圈並不是火辣辣的，而是淡淡的香味，每次吃都感覺一股淡淡的鹹味和洋蔥味，兩種味道夾雜在一起，加上一些些作料和碳水化合物，那味道簡直無法形容",
+            "type": "點心",
+            "tags": [
+                "五辛素"
+            ],
+            "comments": []
+        },
+        {
+            "id": "item009",
+            "name": "薯條",
+            "price": 40,
+            "img": "https://drive.google.com/uc?id=1zGLO_nj2jPPKRDZNtRh6JUhGCMrzJunD",
+            "description": "外表香脆，內在酥軟，搭配芥末醬真的是絕配",
+            "type": "點心",
+            "tags": null,
+            "comments": []
+        },
+        {
+            "id": "item010",
+            "name": "珍珠鮮奶茶",
+            "price": 60,
+            "img": "https://drive.google.com/uc?id=16WQoWCoY4jbYRiprbxci3InhJSUdaGUv",
+            "description": "珍珠飽滿有彈性、嚼勁，唇齒留香，奶茶味道香甜，顏色好看",
+            "type": "飲料",
+            "tags": null,
+            "comments": []
+        }
+    ]
+}

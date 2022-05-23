@@ -1,6 +1,6 @@
 import { AppBar, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import { green, grey } from "@material-ui/core/colors";
-import { ListAlt, RestaurantMenuSharp, RestaurantSharp } from "@material-ui/icons";
+import { Edit, ListAlt, RestaurantMenuSharp, RestaurantSharp } from "@material-ui/icons";
 import { format } from "date-fns";
 import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
@@ -108,7 +108,7 @@ const Layout = ({ children }) => {
             text: '更新菜單',
             icon: <RestaurantMenuSharp />,
             path: '/modify-menu'
-        }
+        },
     ];
 
     return (
@@ -138,7 +138,7 @@ const Layout = ({ children }) => {
                     {menuItems.map(item => (
                         <ListItem
                             button
-                            onClick={() => history.push(item.path)}
+                            onClick={() => history.replace(item.path)}
                             key={item.text}
                             className={location.pathname === item.path ? classes.active : classes.deactive}
                         >

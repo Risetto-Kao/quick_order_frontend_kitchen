@@ -87,28 +87,56 @@ const useStyles = makeStyles({
     }
 });
 
-
-
-
 const Kitchen = () => {
 
     const [orderList, setOrderList] = useState([]);
 
+    const { loading, error, data, subscribeToMore } = useQuery(QUERY_ORDERS, { variables: { restaurantId: "s001" } });
+
+
     useEffect(() => {
-        getData();
-    }, []);
+        if (data) {
+            setOrderList(data.todayOrders);
+        }
+        subscribeToMore({
+            document: SUBSCRIPTION_ORDER,
+            variables: { restaurantId: "restautantID" },
+            updateQuery: (prev, { subscriptionData }) => {
+                setOrderList(subscriptionData.data.order)
+            }
+        })
+    }, [data, subscribeToMore]);
+    // useEffect(() => {
+    //     if (data) {
+    //         setOrderList(data.todayOrders);
+    //     }
+    // }, [data]);
+    // useEffect(() => {
+    //     try {
+    //         subscribeToMore({
+    //             document: SUBSCRIPTION_ORDER,
+    //             variables: { restautantId: "s001" },
+    //             updateQuery: (prev, { subscriptionData }) => {
+    //                 if (!subscriptionData.data) return prev;
+    //                 const newOrder = subscriptionData.data;
 
-    const getData = () => {
-        fetch('http://localhost:8000/orders')
-            .then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                setOrderList(data);
-                console.log(data);
-            }).catch(() => console.log("error"));
-    }
+    //                 console.log(newOrder);
+    //                 console.log(prev.queryOrders);
+
+    //                 return {
+    //                     ...prev,
+    //                     queryOrders: [newOrder, ...prev.queryOrders],
+    //                 };
+    //             },
+    //         });
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }, [subscribeToMore]);
 
 
+    if (loading) return <>loading...</>;
+    if (error) return <>error</>;
 
     return (
 
@@ -125,5 +153,48 @@ const Kitchen = () => {
         </Container>
     );
 }
+
+//todo:------------------------------------------------------------------------------------
+//todo:------------------------------------------------------------------------------------
+
+// const Kitchen = () => {
+
+//     const [orderList, setOrderList] = useState([]);
+//     const loading = false;
+//     const error = false;
+
+//     useEffect(() => {
+//         getData();
+//     }, []);
+
+//     const getData = () => {
+//         fetch('http://localhost:8000/orders')
+//             .then(function (response) {
+//                 return response.json();
+//             }).then(function (data) {
+//                 setOrderList(data);
+//                 console.log(data);
+//             }).catch((e) => console.log("error" + e));
+//     }
+
+
+//     if (loading) return <>loading...</>;
+//     if (error) return <>error</>;
+
+//     return (
+
+//         <Container>
+//             <Grid container spacing={3} direction="column-reverse">
+//                 {
+//                     orderList.map(order =>
+//                         <Grid key={order.id} item>
+//                             <KitchenOrderList order={order} />
+//                         </Grid>
+//                     )
+//                 }
+//             </Grid>
+//         </Container>
+//     );
+// }
 
 export default Kitchen;

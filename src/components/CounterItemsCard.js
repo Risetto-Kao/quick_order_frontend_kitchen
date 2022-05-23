@@ -10,10 +10,10 @@ const useStyles = makeStyles({
     }
 });
 
-const statusColor = (item) => {
-    if (item.status === 'RAW') return raw;
-    if (item.status === 'DOING') return doing;
-    if (item.status === 'DONE') return done;
+const statusColor = (status) => {
+    if (status === 'unready') return raw;
+    if (status === 'preparing') return doing;
+    if (status === 'readly') return done;
     return raw;
 }
 
@@ -25,10 +25,8 @@ const CounterItemsCard = ({ items }) => {
         <div >
             {items.map(item => {
                 var quantity;
-                var color = statusColor(item.status);
-
+                var color = statusColor(item.orderItemInfo.status);
                 if (item.orderItemInfo) {
-                    console.log(item.orderItemInfo);
                     quantity = item.orderItemInfo.quantity;
                 } else {
                     quantity = 0;

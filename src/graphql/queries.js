@@ -25,8 +25,13 @@ query Items($restaurantId: ID!) {
   items(restaurantID: $restaurantId) {
     id
     name
-    price
     description
+    price
     img
+    comments {
+      name
+      content
+      time
+    }
   }
 }`;

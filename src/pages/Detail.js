@@ -28,9 +28,9 @@ const Detail = () => {
         {
             id: "",
             name: "",
-            englishName: "",
             price: 0,
             description: "",
+            englishName: "",
             englishDescription: "",
             englishType: "main",
             img: "",
@@ -60,7 +60,11 @@ const Detail = () => {
 
         for (var i = 0; i < data.items.length; i++) {
             if (data.items[i].id === id) {
-                setCurrentItem(data.items[i]);
+                setCurrentItem({
+                    ...data.items[i], englishName: "",
+                    englishDescription: "",
+                    englishType: "main",
+                });
                 return;
             }
         }
@@ -111,7 +115,7 @@ const Detail = () => {
     }
     const handleUpdate = async () => {
         try {
-
+            console.log(currentItem);
             await updateItemAPI({
                 variables: {
                     updateItemId: currentItem.id,
@@ -125,6 +129,7 @@ const Detail = () => {
                         englishDescription: currentItem.englishDescription,
                         englishType: currentItem.englishType
                     },
+
                     file: currentFile
                 }
             });
@@ -241,6 +246,7 @@ const Detail = () => {
                     multiline
                     rows={4}
                     defaultValue={currentItem.description}
+                    onChange={handleChange('description')}
                 // style={{ background:  }}
                 />
             </Grid>
@@ -255,6 +261,7 @@ const Detail = () => {
                     multiline
                     rows={4}
                     defaultValue={currentItem.englishDescription}
+                    onChange={handleChange('englishDescription')}
                 />
             </Grid>
             <Grid item xs={3}>
@@ -269,211 +276,5 @@ const Detail = () => {
         </Grid>
     );
 }
-//todo:------------------------------------------------------------------------------------
-//todo:------------------------------------------------------------------------------------
-
-// const Detail = () => {
-
-
-//     const history = useHistory();
-//     const { id } = useParams();
-//     const [currentFile, setCurrentFile] = useState({
-//         file: null
-//     });
-//     const { loading, error, data } = useQuery(QUERY_ITEMS, { variables: { restaurantId: "s001" } });
-//     const [currentItem, setCurrentItem] = useState(
-//         {
-//             id: "",
-//             name: "",
-//             englishName: "",
-//             price: 0,
-//             description: "",
-//             englishDescription: "",
-//             img: "",
-//             type: "主食",
-//             comments: [],
-//         }
-//     );
-
-//     useEffect(() => {
-//         getData();
-//     }, []);
-
-
-//     const isAddPage = () => {
-//         return id === "add";
-//     }
-
-
-
-//     const getData = () => {
-//         if (id === null) return;
-//         if (isAddPage()) return;
-//         console.log(data.items);
-
-//         for (var i = 0; i < data.items.length; i++) {
-//             if (data.items[i].id === id) {
-//                 setCurrentItem(data.items[i]);
-//                 return;
-//             }
-//         }
-//     }
-
-//     const endEdit = () => {
-//         // history.goBack();
-//         history.push("/modify-menu");
-//         // history.go(0);
-//     }
-
-//     const handleCreate = async () => {
-
-
-//         endEdit();
-//     }
-
-//     const handleDelete = async () => {
-
-//         endEdit();
-//     }
-//     const handleUpdate = async () => {
-
-//         endEdit();
-//     }
-
-
-//     const handleChange = (prop) => (event) => {
-//         var value = event.target.value;
-//         if (value === "" && prop === "price") {
-//             value = 0;
-//         }
-//         if (prop === 'price') {
-//             value = parseInt(value);
-//         }
-//         setCurrentItem({ ...currentItem, [prop]: value });
-//     };
-
-
-
-//     const handleFileChange = (e) => {
-//         const file = e.target.files[0]
-//         if (!file) return
-//         console.log("file ", file)
-//         setCurrentFile(file);
-//         setCurrentItem({ ...currentItem, img: URL.createObjectURL(file) });
-//     }
-
-//     const MyPlaceHolder = () => {
-//         return <Box width={400} height={400} color="red"></Box>
-//     }
-
-//     if (loading) return <>loading...</>;
-//     if (error) return <>error</>
-
-//     if (id === "add") {
-//         return (
-//             <Grid container>
-//                 <Grid item spacing={2} xs={9}>
-//                     <Image height={400} src={currentItem.img} />
-//                     <input type="file" onChange={handleFileChange} />
-//                 </Grid>
-//                 <Grid item container xs={3}>
-//                     <Grid spacing={2}>
-//                         <TextField style={{ marginBottom: "10px" }} variant="outlined" onChange={handleChange('name')} label="名稱" />
-//                     </Grid>
-//                     <Grid>
-//                         <TextField style={{ marginBottom: "10px" }} variant="outlined" onChange={handleChange('englishName')} label="英文名稱" />
-//                     </Grid>
-//                     <Grid>
-//                         <TextField style={{ marginBottom: "10px" }} variant="outlined" onChange={handleChange('price')} value={currentItem.price} label="價格" />
-//                     </Grid>
-//                 </Grid>
-//                 <Grid item lg={9} xs={9} spacing={1}>
-//                     <TextField
-//                         fullWidth
-//                         id="outlined-multiline-static"
-//                         label="描述"
-//                         multiline
-//                         rows={4}
-//                     />
-//                 </Grid>
-//                 <Grid item lg={2}>
-//                     <Button onClick={handleCreate}>新增餐點</Button>
-//                 </Grid>
-//                 <Grid item lg={9} xs={9} spacing={1}>
-//                     <TextField
-//                         fullWidth
-//                         id="outlined-multiline-static"
-//                         label="英文描述"
-//                         multiline
-//                         rows={4}
-//                     />
-//                 </Grid>
-//                 <Grid item lg={2}>
-//                     <Button onClick={endEdit}>取消新增</Button>
-//                 </Grid>
-//             </Grid>
-//         );
-//     }
-
-
-//     console.log(currentItem);
-//     return (
-
-//         <Grid container>
-//             <Grid item spacing={2} xs={9}>
-//                 <Image height={400} src={currentItem.img} />
-//                 <input type="file" onChange={handleFileChange} />
-//             </Grid>
-//             <Grid item container xs={3}>
-//                 <Grid spacing={2}>
-//                     <TextField variant="outlined" onChange={handleChange('name')} value={currentItem.name} label="名稱" />
-
-//                 </Grid>
-//                 <Grid>
-
-//                     <TextField variant="outlined" onChange={handleChange('englishName')} value={currentItem.englishName} label="英文名稱" />
-//                 </Grid>
-//                 <Grid>
-
-//                     <TextField variant="outlined" onChange={handleChange('price')} value={currentItem.price} label="價格" />
-//                 </Grid>
-//             </Grid>
-//             <Grid item xs={9} spacing={1}>
-//                 <TextField
-//                     fullWidth
-//                     id="outlined-multiline-static"
-//                     placeholder="描述"
-
-//                     multiline
-//                     rows={4}
-//                     defaultValue={currentItem.description}
-//                 />
-//             </Grid>
-//             <Grid item xs={3}>
-//                 <Button onClick={handleUpdate}>更新資料</Button>
-//             </Grid>
-//             <Grid item xs={9} spacing={1}>
-//                 <TextField
-//                     fullWidth
-//                     id="outlined-multiline-static"
-//                     placeholder="英文描述"
-//                     multiline
-//                     rows={4}
-//                     defaultValue={currentItem.englishDescription}
-//                 />
-//             </Grid>
-//             <Grid item xs={3}>
-//                 <Button onClick={handleDelete}>刪除資料</Button>
-//             </Grid>
-//             <Grid>
-//                 評論
-//                 <List>
-//                     {currentItem.comments.map(c => (<div id={c.name}>{c.name} {c.content} {c.rate}</div>))}
-//                 </List>
-//             </Grid>
-//         </Grid>
-//     );
-// }
-
 
 export default Detail;

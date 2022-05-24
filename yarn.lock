@@ -8350,6 +8350,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-placeholder-image@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/react-placeholder-image/-/react-placeholder-image-0.1.8.tgz#5ebcd54a1d26545e1eb7bd6175a3b475e5ad15dd"
+  integrity sha512-UsTaqWRmfKxnwJutSLB8gwqwIlnsBCEi553kRz4AqFCC9VK9vhb5riDpA0OZZflHBVdn+nrz/330uA+ZUDemlg==
+
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"

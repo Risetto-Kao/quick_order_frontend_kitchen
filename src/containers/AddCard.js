@@ -10,18 +10,8 @@ const useStyles = makeStyles({
     },
 });
 
-// const [createItemAPI, { data, loading, error }] = useMutation(CREATE_ITEM);
 
-// if (error) console.log(error);
-
-// const galleryImageList = [];
-
-// const createItem = async () => {
-//     console.log(values);
-//     // todo: connect api => create item
-//     await createItemAPI({ variables: { data: values } });
 //     window.location.reload();
-// }
 
 
 const AddCard = () => {

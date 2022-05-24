@@ -34,7 +34,7 @@ const CounterOrderList = ({ order }) => {
     return (
         <Grid container direction="row">
             <Card className={classes.infoCard}>
-                {order.id}
+                顧客：林先生
             </Card>
             <Card className={classes.infoCard}>
                 {order.tableNo} 桌

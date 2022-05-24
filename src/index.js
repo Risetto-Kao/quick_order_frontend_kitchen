@@ -7,23 +7,24 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {createUploadLink} from "apollo-upload-client"
+import { createUploadLink } from "apollo-upload-client"
+// 
+const uriBase = '49e6-150-117-240-26.ngrok.io/graphql';
+// const uriBase = 'api.eatba.tk/graphql';
 
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'https://49e6-150-117-240-26.ngrok.io/graphql',
-  // uri: 'https://api.eatba.tk/graphql',
+  uri: `https://${uriBase}`,
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  // uri: `ws://49e6-150-117-240-26.ngrok.io/graphql`,
-  uri: 'ws://api.eatba.tk/graphql',
+  uri: `wss://${uriBase}`,
   options: { reconnect: true },
 });
 // create upload link for uploading image purpose
 const uploadLink = createUploadLink({
-  uri: 'https://49e6-150-117-240-26.ngrok.io/graphql',
+  uri: `https://${uriBase}`,
 })
 
 const link = split(

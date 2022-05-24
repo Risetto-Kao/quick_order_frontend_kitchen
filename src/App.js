@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 import { orange, purple } from "@material-ui/core/colors";
 import Layout from "./components/Layout";
 import { primary, secondary } from "./constants/styles";
+import Detail from "./pages/Detail";
 
 const theme = createTheme({
     palette: {
@@ -42,6 +43,7 @@ const App = () => {
                         <Route exact path="/modify-menu">
                             <ModifyMenu />
                         </Route>
+                        <Route exact path="/detail/:id" children={<Detail />} />
                     </Switch>
                 </Layout>
             </Router>

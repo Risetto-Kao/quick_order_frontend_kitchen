@@ -10,6 +10,7 @@ query TodayOrders($restaurantId: ID!) {
       orderItemInfo {
         quantity
         note
+        state
       }
     }
     tableNo
@@ -20,13 +21,19 @@ query TodayOrders($restaurantId: ID!) {
 }
 `;
 
+// 因為這邊沒拿到english的東西，所以我後面直接設定的時候就出狀況
 export const QUERY_ITEMS = gql`
 query Items($restaurantId: ID!) {
   items(restaurantID: $restaurantId) {
     id
     name
-    price
     description
+    price
     img
+    comments {
+      name
+      content
+      time
+    }
   }
 }`;

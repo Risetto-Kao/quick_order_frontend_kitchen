@@ -33,7 +33,7 @@ const KitchenOrderList = ({ order }) => {
                 {order.tableNo} 桌
             </div> */}
                 {order.items.map(item => (
-                    <KitchenItemCard key={item.id} item={item} />
+                    <KitchenItemCard orderID={order.id} key={item.id} item={item} />
                 ))}
 
             </Grid>

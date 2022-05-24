@@ -17,19 +17,25 @@ query TodayOrders($restaurantId: ID!) {
     totalPrice
     time
     id
+    customerName
+    arrivedTime
+    isTakeOut
   }
 }
 `;
 
-// 因為這邊沒拿到english的東西，所以我後面直接設定的時候就出狀況
 export const QUERY_ITEMS = gql`
-query Items($restaurantId: ID!) {
-  items(restaurantID: $restaurantId) {
+query Query($restaurantId: ID!) {
+  itemAllLang(restaurantID: $restaurantId) {
     id
     name
     description
     price
     img
+    type
+    englishName
+    englishDescription
+    englishType
     comments {
       name
       content

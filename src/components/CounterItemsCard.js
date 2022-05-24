@@ -3,10 +3,27 @@ import { Grid, makeStyles } from "@material-ui/core";
 import { Col, Row } from 'react-bootstrap';
 import { Circle } from '@mui/icons-material';
 import { doing, done, primary, raw } from '../constants/styles';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles({
+    list: {
+        marginBottom: "0.8rem",
+        // borderBottom: '1px solid rgba(0,0,0,0.1)'
+    },
+    quantity: {
+        fontWeight: 'bold',
+        marginRight: '7px',
+        fontSize: '15px'
+    },
+    state: {
+        marginRight: '7px',
+    },
     container: {
-        marginBottom: "0.8rem"
+        verticalAlign: 'middle',
+        // maxHeight: '20%',
+    },
+    bundle: {
+        // borderLeft: '1px solid rgba(0,0,0,0.1)'
     }
 });
 
@@ -21,30 +38,52 @@ const CounterItemsCard = ({ items }) => {
 
     const classes = useStyles();
 
-    return (
-        <div >
-            {items.map(item => {
-                console.log(item)
-                var quantity;
-                if (item.orderItemInfo) {
-                    quantity = item.orderItemInfo.quantity;
-                } else {
-                    quantity = 0;
-                }
-                var color = statusColor(item.orderItemInfo.state);
+    var itemBundle = [];
+    const bundleSize = 3;
 
-                return (
-                    <Grid container className={classes.container}>
-                        <Grid item style={{ marginRight: '5px' }}>
-                            <Circle fontSize="small" style={{ color: color }} />
-                        </Grid>
-                        <Grid>
-                            {item.name}* {quantity}
-                        </Grid>
-                    </Grid>
-                );
+
+    for (var i = 0; i < items.length; i += 3) {
+        var bundle = [items[i]];
+        if (i + 1 < items.length) bundle.push(items[i + 1]);
+        if (i + 2 < items.length) bundle.push(items[i + 2]);
+
+        itemBundle.push(bundle);
+    }
+
+    return (
+        <Grid className={classes.container} container direction='row' spacing={2}>
+            {itemBundle.map(bundle => {
+                return <Grid item className={classes.bundle}> {
+                    bundle.map(item => {
+                        var quantity;
+                        if (item.orderItemInfo) {
+                            quantity = item.orderItemInfo.quantity;
+                        } else {
+                            quantity = 0;
+                        }
+                        var color = statusColor(item.orderItemInfo.state);
+
+                        return (
+                            <Grid key={item.id} container className={classes.list} direction='row'>
+                                <Grid item className={classes.state}>
+                                    <Circle fontSize="small" style={{ color: color }} />
+                                </Grid>
+                                <Grid className={classes.quantity}>
+                                    {quantity} *
+                                </Grid>
+
+                                <Grid>
+                                    {item.name}
+
+                                </Grid>
+                            </Grid>
+                        );
+
+                    })}</Grid>
             })}
-        </div>
+
+
+        </Grid>
     );
 }
 

@@ -1,12 +1,5 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import ReactDOM from "react-dom";
-// import ImageUpload from "./ImageUpload";
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -31,7 +24,8 @@ export default function Album() {
 
   useEffect(() => {
     if (data) {
-      setItems(data.items)
+      setItems(data.itemAllLang);
+      console.log(data.itemAllLang);
     }
   }, [loading]);
 

@@ -9,9 +9,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createUploadLink } from "apollo-upload-client"
 
-// 
-const uriBase = '49e6-150-117-240-26.ngrok.io/graphql';
-// const uriBase = 'api.eatba.tk/graphql';
+// const uriBase = '49e6-150-117-240-26.ngrok.io/graphql';
+const uriBase = 'api.eatba.tk/graphql';
 
 
 // Create an http link:

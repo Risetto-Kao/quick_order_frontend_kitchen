@@ -4,11 +4,12 @@ import { Button, Grid } from "@material-ui/core";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ORDERS } from "../graphql/queries";
 import { CREATE_ORDER, SUBSCRIPTION_ORDER } from "../graphql";
+import DropdownMenuButton from "../containers/DropdownMenuButton";
 
 const Counter = () => {
 
     const [orderList, setOrderList] = useState([]);
-
+    const [sortingArg, setSortingArg] = useState('arrivedTime');
     const { loading, error, data, subscribeToMore } = useQuery(QUERY_ORDERS, { variables: { restaurantId: "s001" } });
 
     useEffect(() => {
@@ -19,92 +20,53 @@ const Counter = () => {
             document: SUBSCRIPTION_ORDER,
             variables: { restaurantId: "restautantID" },
             updateQuery: (prev, { subscriptionData }) => {
-                setOrderList(subscriptionData.data.order)
+                // setOrderList(subscriptionData.data.order)
+                setOrderList([...prev, subscriptionData.data.order]);
+
             }
         })
     }, [data, subscribeToMore]);
 
-    // useEffect(() => {
-    //     try {
-    //         subscribeToMore({
-    //             document: SUBSCRIPTION_ORDER,
-    //             variables: { restaurantId: "s001" },
-    //             updateQuery: (prev, { subscriptionData }) => {
-    //                 if (!subscriptionData.data) return prev;
-    //                 const newOrder = subscriptionData.data;
+    useEffect(() => {
+        sorting();
+    }, [sortingArg])
 
-    //                 console.log(newOrder);
-    //                 console.log(prev.todayOrders);
+    const sorting = () => {
+        var sortingFunction = byArrivedTime;
+        if (sortingArg === 'arrivedTime') sortingFunction = byArrivedTime;
+        else if (sortingArg === 'totalPrice') sortingFunction = byTotalPrice;
+        else if (sortingArg === 'tableNo') sortingFunction = byTableNo;
 
-    //                 return {
-    //                     ...prev,
-    //                     todayOrders: [newOrder, ...prev.todayOrders],
-    //                 };
-    //             },
-    //         });
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }, [subscribeToMore]);
+        setOrderList([...orderList].sort(sortingFunction));
+    }
 
+    const byArrivedTime = (a, b) => {
+        return a.arrivedTime.localeCompare(b.arrivedTime);
+    }
+
+    const byTotalPrice = (a, b) => {
+        return a.totalPrie > b.totalPrice ? 1 : -1;
+    }
+
+    const byTableNo = (a, b) => {
+        return a.tableNo.localeCompare(b.tableNo);
+    }
+
+    if (loading) return <>loading</>;
+    if (error) return <>error</>
+    if (!orderList.length) {
+        return <>loading...</>
+    }
 
     return (
         <div>
-            <Grid container direction='column-reverse' spacing={3}>
-                {loading ? (
-                    <p>Loading...</p>
-                ) : error ? (
-                    <p>Error ^U^</p>
-                ) : (
-                    orderList.map(order =>
-                    (<Grid item key={order.id}>
-                        <CounterOrderList order={order} />
-                    </Grid>))
-                )}
+            <DropdownMenuButton setSortingArg={setSortingArg} />
+            <Grid container direction='column'>
+                {orderList.map(order =>
+                    <CounterOrderList key={order.id} order={order} />)}
             </Grid>
         </div>
     );
 }
-//todo:------------------------------------------------------------------------------------
-//todo:------------------------------------------------------------------------------------
-// const Counter = () => {
-
-//     const [orderList, setOrderList] = useState([]);
-//     const loading = false;
-//     const error = false;
-
-//     useEffect(() => {
-//         getData();
-//     }, []);
-
-//     const getData = () => {
-//         fetch('http://localhost:8000/orders')
-//             .then(function (response) {
-//                 return response.json();
-//             }).then(function (data) {
-//                 setOrderList(data);
-//                 console.log(data);
-//             }).catch((e) => console.log("error" + e));
-//     }
-
-
-//     return (
-//         <div>
-//             <Grid container direction='column-reverse' spacing={3}>
-//                 {loading ? (
-//                     <p>Loading...</p>
-//                 ) : error ? (
-//                     <p>Error ^U^</p>
-//                 ) : (
-//                     orderList.map(order =>
-//                     (<Grid item key={order.id}>
-//                         <CounterOrderList order={order} />
-//                     </Grid>))
-//                 )}
-//             </Grid>
-//         </div>
-//     );
-// }
-
 
 export default Counter;

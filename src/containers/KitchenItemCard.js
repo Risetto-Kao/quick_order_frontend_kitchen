@@ -69,9 +69,6 @@ const KitchenItemCard = ({ item, orderID }) => {
         // cardClassName = statusToStyles(status);
 
         try {
-            console.log(orderID);
-            console.log(item.id);
-            console.log(nextStatus(status, sequential));
             await updateStateAPI({
                 variables: {
                     orderId: orderID,

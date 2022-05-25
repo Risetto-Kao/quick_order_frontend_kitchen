@@ -35,7 +35,7 @@ const Kitchen = () => {
             document: SUBSCRIPTION_ORDER,
             variables: { restaurantId: "restautantID" },
             updateQuery: (prev, { subscriptionData }) => {
-                setOrderList(subscriptionData.data.order)
+                setOrderList([...subscriptionData.data.order])
             }
         })
     }, [data, subscribeToMore]);

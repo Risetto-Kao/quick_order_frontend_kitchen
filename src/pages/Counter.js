@@ -21,7 +21,7 @@ const Counter = () => {
             variables: { restaurantId: "restautantID" },
             updateQuery: (prev, { subscriptionData }) => {
                 // setOrderList(subscriptionData.data.order)
-                setOrderList([...prev, subscriptionData.data.order]);
+                setOrderList([...subscriptionData.data.order]);
 
             }
         })

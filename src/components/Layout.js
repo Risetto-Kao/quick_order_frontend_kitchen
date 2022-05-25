@@ -138,7 +138,7 @@ const Layout = ({ children }) => {
                     {menuItems.map(item => (
                         <ListItem
                             button
-                            onClick={() => history.replace(item.path)}
+                            onClick={() => window.location.replace(item.path)}
                             key={item.text}
                             className={location.pathname === item.path ? classes.active : classes.deactive}
                         >

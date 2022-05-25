@@ -229,7 +229,7 @@ const Detail = () => {
                     />
                 </Grid>
                 <Grid item >
-                    <Button style={{ background: 'yellow', marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={handleCreate}>新增餐點</Button>
+                    <Button style={{ background: 'green', marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={handleCreate}>新增餐點</Button>
                 </Grid>
                 <Grid item >
                     <Button style={{ marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={endEdit}>取消新增</Button>
@@ -287,7 +287,7 @@ const Detail = () => {
                 </Grid>
 
                 <Grid item xs={2}>
-                    <Button style={{ background: 'yellow', marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={handleUpdate}>更新資料</Button>
+                    <Button style={{ background: 'green', marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={handleUpdate}>更新資料</Button>
                 </Grid>
                 <Grid item xs={2}>
                     <Button style={{ background: '#FF7575', marginLeft: '20px', marginTop: '20px' }} variant="contained" onClick={handleDelete}>刪除資料</Button>

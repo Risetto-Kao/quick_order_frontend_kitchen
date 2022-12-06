@@ -4,6 +4,7 @@
 Quick Order 是一個點餐 App
 
 本系統的前端分為顧客端系統與店家端系統，分別給予顧客方使用者及店家方使用者使用，而後端則為一共同 Server ， 因此店家方使用者可即時收到顧客方使用者送出之訂單。除此之外，本系統也串接了 Tappay 金流服務、Mixpanel 觀察使用者行為，可於第三方平台進行管理!
+
 細節請參考： https://github.com/Risetto-Kao/quick_order_frontend_kitchen/blob/main/introduction.md
 
 ## 系統架構

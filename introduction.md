@@ -14,6 +14,7 @@
 ### 店家端系統
 ![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/tree/main/present/cuisine_state.png)
 ![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/tree/main/demo.png)
+![image](https://github.com/Risetto-Kao/experience_sampling/blob/main/present/question_type3.png)
 
 ### 串接第三方平台
 ![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/tree/main/present/third_party.png)

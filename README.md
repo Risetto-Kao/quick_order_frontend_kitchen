@@ -1,26 +1,17 @@
-# Quick Order (frontend, kitchen)
+# Quick Order (前端--廚房端)
 
-## Available Scripts
+## 簡介
+Quick Order 是一個點餐 App
 
-In the project directory, you can run:
+本系統的前端分為顧客端系統與店家端系統，分別給予顧客方使用者及店家方使用者使用，而後端則為一共同 Server ， 因此店家方使用者可即時收到顧客方使用者送出之訂單。除此之外，本系統也串接了 Tappay 金流服務、Mixpanel 觀察使用者行為，可於第三方平台進行管理!
+細節請參考：
 
-### `npm start`
+## 前端 -- 顧客端
+[https://github.com/sdmproject/customerUI](https://github.com/sdmproject/customerUI)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 後端
+[https://github.com/konnovdev/food-order-backend](https://github.com/konnovdev/food-order-backend)
 
-### `npm run build`
+## 專案規模
+總計完成 11 個UI頁面、14 支API、197（前端）和 158（後端）個Commits、5145（前端）和 4650 （後端）行程式碼
 
-Builds the app for production to the `build` folder.\
-
-# Overview
-## Kitchen
-![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/blob/main/%E6%88%AA%E5%9C%96%202022-04-12%20%E4%B8%8A%E5%8D%8811.45.40.png)
-## Counter
-![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/blob/main/%E6%88%AA%E5%9C%96%202022-04-12%20%E4%B8%8A%E5%8D%8811.45.53.png)
-## Counter_ModifyMenu
-![image](https://github.com/Risetto-Kao/quick_order_frontend_kitchen/blob/main/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202022-04-26%20203438.jpg)
-
-# Todo List
-## Login/register
-## Modify menu
